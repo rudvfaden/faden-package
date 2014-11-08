@@ -91,6 +91,7 @@ url=false, isbn=false
 %%--------------------------------------------------------------------------
 
 \setkeys{Gin}{width=1\textwidth} % make figures as wide as the margins
+%%Important words are added to the index and printed in different bold
 \newcommand{\important}[1]
 {\IfSubStr{#1}{!}
     {\textcolor{black}{\textbf{\StrBefore{#1}{!}~\StrBehind{#1}{!}}}\index{#1}}
