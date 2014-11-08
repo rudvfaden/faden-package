@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage{faden}
+\addbibresource[datatype=bibtex]{/Users/rudfaden/Dropbox/PhD/bib/library.bib}
+\makeindex
+\title{Physician Information Acquisition In a Dynamic Setting}
+\author{Rud Faden}
+\date{\today} % no date
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+In this document a new package is tested. This package allows special numbered environments \cite{Acton1975}
+\begin{align}
+    \pder{x} \\
+    \pder{x}{y}
+\end{align}
+
+
+\begin{example}
+This text is inside a special environment, some boldface text is printed
+at the beginning and a new \important{indentation} is set.
+\end{example}
+
+\printbibliography
+\printindex
+\end{document}

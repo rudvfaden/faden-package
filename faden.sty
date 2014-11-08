@@ -1,0 +1,98 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{faden}[11/08/14 My Own LaTeX package]
+%%--------------------------------------------------------------------------
+%% Pacakges
+%%--------------------------------------------------------------------------
+\RequirePackage[top=2.5cm, bottom=2.5cm, left=4cm, right=4cm]{geometry} %Margins
+\RequirePackage{fixltx2e} 									% fix common latex errors
+%% Math
+\RequirePackage{mathtools} 									% math
+\RequirePackage{amsthm} 									% theorems and definition
+\RequirePackage{bm} 										% Bold math
+%% Figures and tables
+\RequirePackage{booktabs} 									% pretty tables
+\RequirePackage{subcaption} 								% subfigures
+\RequirePackage{pgfplots,tikz} \pgfplotsset{compat =1.11} 	% figures
+\usetikzlibrary{decorations.pathreplacing}
+%% References
+\RequirePackage{hyperref}  									% hypersetup
+\RequirePackage{cleveref} 									% auto-detect cross reference type when using \cref
+% bibliography
+\RequirePackage{csquotes}
+\emergencystretch=1em
+\RequirePackage[%
+backend=bibtex,   										% use BibTeX
+style=chicago-authordate,
+natbib=true,
+bibwarn=true,
+backref=true,
+url=false, isbn=false
+]{biblatex}
+%% Misc.
+\RequirePackage{microtype} 									% improves the spacing between words and letters
+\RequirePackage[colorinlistoftodos]{todonotes} 				% todo notes
+\RequirePackage{url} 										% for line breaks in url links
+\RequirePackage[titletoc,toc,title]{appendix} 				% appendices
+\RequirePackage{accents} 									% underbar
+% Index
+\RequirePackage{imakeidx} 									% Index
+\RequirePackage{xstring}
+\RequirePackage{xcolor}
+%%--------------------------------------------------------------------------
+%% Colors and hypersetup
+%%--------------------------------------------------------------------------
+\definecolor{webgreen}{rgb}{0,.5,0}
+\definecolor{webbrown}{rgb}{.6,0,0}
+\definecolor{myblue}{HTML}{394773}
+\hypersetup{
+	colorlinks = true,      					%	Color links instead of ugly boxes
+	urlcolor   = webbrown,  					%	Colors for external hyperlinks
+	linkcolor  = myblue,      					%	Colors of internal links
+	citecolor  = webgreen,						%	Colors of citations
+	pdfauthor = {Rud Faden: rudfaden@gmail.com},
+	pdfcreator = {LaTeXing}
+}
+%%--------------------------------------------------------------------------
+%% Commands
+%%--------------------------------------------------------------------------
+% math
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}} % underbar
+\global\long\def\argmax{\operatornamewithlimits{arg\, max}} % argmax
+% partial derivative with optional second argument
+\makeatletter
+\DeclareRobustCommand{\pder}[1]{%
+  \@ifnextchar\bgroup{\@pder{#1}}{\@pder{}{#1}}}
+\newcommand{\@pder}[2]{\frac{\partial#1}{\partial#2}}
+\makeatother
+% Sets
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+%%--------------------------------------------------------------------------
+%% Theorem & Definitions
+%%--------------------------------------------------------------------------
+
+% Theorem Styles
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{proposition}[thm]{Proposition}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{assumption}[thm]{Assumption}
+% Definition Styles
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+%%--------------------------------------------------------------------------
+%% Other
+%%--------------------------------------------------------------------------
+
+\setkeys{Gin}{width=1\textwidth} % make figures as wide as the margins
+\newcommand{\important}[1]
+{\IfSubStr{#1}{!}
+    {\textcolor{black}{\textbf{\StrBefore{#1}{!}~\StrBehind{#1}{!}}}\index{#1}}
+    {\textcolor{black}{\textbf{#1}}\index{#1}\kern-1pt}
+}
