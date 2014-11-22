@@ -1,27 +1,87 @@
-\documentclass{article}
+\documentclass[a4paper]{article}
+
+%%--------------------------------------------------------------------------
+%% Setup
+%%--------------------------------------------------------------------------
+
+\def\myaffiliation{University of Copenhagen}
+\def\myauthor{Rud Faden}
+\def\myemail{rud.faden@econ.ku.dk}
+\def\mytitle{Physician Information Acquisition In a Dynamic Setting}
+\def\mykeywords{bla, bla bla}
+
+%%--------------------------------------------------------------------------
 \usepackage{faden}
-\addbibresource[datatype=bibtex]{/Users/rudfaden/Dropbox/PhD/bib/library.bib}
+
+\addbibresource[datatype=bibtex]{../../PhD/bib/library.bib}
+
 \makeindex
-\title{Physician Information Acquisition In a Dynamic Setting}
-\author{Rud Faden}
+
+% Author and title
+\title{\mytitle}
+\author{
+{\myauthor} \\
+\textit{\small \myaffiliation} \\
+\small{\texttt{\href{\myemail}{\myemail}}}
+}
 \date{\today} % no date
+
+
 
 \begin{document}
 \maketitle
+\begin{abstract}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris
+nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+in culpa qui ocia deserunt mollit anim id est laborum.
+\end{abstract}
 
-\section{Introduction}
-In this document a new package is tested. This package allows special numbered environments \cite{Acton1975}
-\begin{align}
-    \pder{x} \\
-    \pder{x}{y}
-\end{align}
 
 
-\begin{example}
-This text is inside a special environment, some boldface text is printed
-at the beginning and a new \important{indentation} is set.
-\end{example}
+\section{First}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+ \begin{theorem}
+ \end{theorem}
+\[
+	\sum_{n \rightarrow \infty}^N \frac{1}{n_n}
+\]
 
+\subsection{Test} % (fold)
+\label{sub:test}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+ \begin{definition}
+ \end{definition}
+% subsection test (end)
+\subsubsection{Test 2} % (fold)
+\label{ssub:test_2}
+
+% subsubsection test_2 (end)
+ \begin{definition}
+ \end{definition}
+
+\section{Second}
+
+ \begin{theorem}
+ Suppose that \(X^{\eta}\) and \(X^{\eta'}\) are affiliated with \(S\) and that \(\left \{X^{\eta}\right \} _{\eta\in E}\) is A-ordered, such that \(X^{\eta'}\) is more accurate than \(X^{\eta}\). Then for all utility functions with a single crossing property, \(X^{\eta'}\) is more informative than \(X^{\eta}\)
+ \end{theorem}
+
+ \begin{definition}
+ \end{definition}
+
+\end{document}
+%==================================================%
 \printbibliography
 \printindex
 \end{document}

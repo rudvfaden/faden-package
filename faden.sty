@@ -1,10 +1,57 @@
+% -*- root: test.tex -*-
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{faden}[11/08/14 My Own LaTeX package]
 %%--------------------------------------------------------------------------
 %% Pacakges
 %%--------------------------------------------------------------------------
-\RequirePackage[top=2.5cm, bottom=2.5cm, left=4cm, right=4cm]{geometry} %Margins
+\RequirePackage[top=2.5cm, bottom=2.5cm, left=3.5cm, right=3.5cm]{geometry} %Margins
+
+% Title and author
+\makeatletter
+\def\@maketitle{%
+  \newpage
+  %\vspace{-\topskip}      % remove the initial space
+  \vskip 6em
+   \flushleft Incomplete draft. Please do not cite or quote without premission
+  \vskip 6em
+  {}
+  \begingroup\flushleft    % instead of \begin{center}
+  \let \footnote \thanks
+  \hrule height \z@        % to avoid the insertion of lineskip glue
+    {\LARGE \protect\textbf{\@title} \par}%
+    \vskip 2.5em
+    {\large
+      \lineskip .5em
+
+        \@author
+        \par}%
+    \vskip 1.5em
+    {\small
+      \@date}
+  \par\endgroup            % instead of \end{center}
+  \vskip 6em             % <--- modify this to adjust the separation
+}
+\makeatother
+% font
+\RequirePackage{MnSymbol}
+\RequirePackage[mathlf,textlf,minionint]{MinionPro}
+\RequirePackage{microtype} 									% improves the spacing between words and letters
 \RequirePackage{fixltx2e} 									% fix common latex errors
+% Sections
+\RequirePackage[explicit]{titlesec}
+\RequirePackage{textcase}
+
+% sections and title
+
+\titleformat{\section}
+  {\normalfont}{\thesection}{1em}{\MakeUppercase{#1}}
+% subsection
+\titleformat{\subsection}
+  {\normalfont}{\thesubsection}{1em}{\itshape{#1}}
+% subsubsection
+\titleformat{\subsubsection}
+  {\normalfont}{\thesubsubsection}{1em}{\itshape{#1}}
+
 %% Math
 \RequirePackage{mathtools} 									% math
 \RequirePackage{amsthm} 									% theorems and definition
@@ -29,7 +76,6 @@ backref=true,
 url=false, isbn=false
 ]{biblatex}
 %% Misc.
-\RequirePackage{microtype} 									% improves the spacing between words and letters
 \RequirePackage[colorinlistoftodos]{todonotes} 				% todo notes
 \RequirePackage{url} 										% for line breaks in url links
 \RequirePackage[titletoc,toc,title]{appendix} 				% appendices
@@ -38,6 +84,10 @@ url=false, isbn=false
 \RequirePackage{imakeidx} 									% Index
 \RequirePackage{xstring}
 \RequirePackage{xcolor}
+%Draft option
+\RequirePackage{ifdraft}
+% Page margins
+
 %%--------------------------------------------------------------------------
 %% Colors and hypersetup
 %%--------------------------------------------------------------------------
@@ -49,7 +99,9 @@ url=false, isbn=false
 	urlcolor   = webbrown,  					%	Colors for external hyperlinks
 	linkcolor  = myblue,      					%	Colors of internal links
 	citecolor  = webgreen,						%	Colors of citations
-	pdfauthor = {Rud Faden: rudfaden@gmail.com},
+	pdfauthor = {\myauthor},
+  pdftitle = {\mytitle},
+  pdfkeywords = {\mykeywords}
 	pdfcreator = {LaTeXing}
 }
 %%--------------------------------------------------------------------------
@@ -72,19 +124,19 @@ url=false, isbn=false
 %%--------------------------------------------------------------------------
 %% Theorem & Definitions
 %%--------------------------------------------------------------------------
-
+\newcounter{dummy} \numberwithin{dummy}{section}
 % Theorem Styles
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{lemma}[thm]{Lemma}
-\newtheorem{proposition}[thm]{Proposition}
-\newtheorem{corollary}[thm]{Corollary}
-\newtheorem{assumption}[thm]{Assumption}
+\newtheorem{theorem}[dummy]{Theorem}
+\newtheorem{lemma}[dummy]{Lemma}
+\newtheorem{proposition}[dummy]{Proposition}
+\newtheorem{corollary}[dummy]{Corollary}
+\newtheorem{assumption}[dummy]{Assumption}
 % Definition Styles
 \theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
-\newtheorem{example}{Example}[section]
+\newtheorem{definition}{Definition}[dummy]
+\newtheorem{example}{Example}[dummy]
 \theoremstyle{remark}
-\newtheorem{remark}{Remark}
+\newtheorem{remark}{Remark}[dummy]
 
 %%--------------------------------------------------------------------------
 %% Other
