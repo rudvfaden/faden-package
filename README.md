@@ -6,7 +6,7 @@ It is inspired by [Kieran Healy](http://kieranhealy.org/).
 
 Besides looking great, the `.sty` file also loads a bunch of packages, custom math commands, and theorem environments.
 
-![Example](image "Example")
+![Example](https://www.dropbox.com/s/g9wookgr8c6a0q3/image.png?dl=1 "Example")
 
 ## Packages
 fixltx2e                  
