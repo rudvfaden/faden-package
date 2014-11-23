@@ -11,11 +11,13 @@
 \def\@maketitle{%
   \newpage
   %\vspace{-\topskip}      % remove the initial space
+
   \vskip 6em
-   \flushleft Incomplete draft. Please do not cite or quote without premission
+   \begin{flushleft}Incomplete draft. Please do not cite or quote without premission \end{flushleft}
   \vskip 6em
   {}
-  \begingroup\flushleft    % instead of \begin{center}
+  \begingroup    % instead of \begin{center}
+  \begin{flushleft}
   \let \footnote \thanks
   \hrule height \z@        % to avoid the insertion of lineskip glue
     {\LARGE \protect\textbf{\@title} \par}%
@@ -28,14 +30,13 @@
     \vskip 1.5em
     {\small
       \@date}
+  \end{flushleft}
   \par\endgroup            % instead of \end{center}
   \vskip 6em             % <--- modify this to adjust the separation
 }
 \makeatother
-% font
-\usepackage{MnSymbol}
-\usepackage[mathlf,textlf,minionint]{MinionPro}
-\RequirePackage{microtype} 									% improves the spacing between words and letters
+
+%\RequirePackage{microtype} 									% improves the spacing between words and letters. Created wird warning, so I will not use it now
 \RequirePackage{fixltx2e} 									% fix common latex errors
 % Sections
 \RequirePackage[explicit]{titlesec}
@@ -124,19 +125,19 @@ url=false, isbn=false
 %%--------------------------------------------------------------------------
 %% Theorem & Definitions
 %%--------------------------------------------------------------------------
-\newcounter{dummy} \numberwithin{dummy}{section}
+
 % Theorem Styles
-\newtheorem{theorem}[dummy]{Theorem}
-\newtheorem{lemma}[dummy]{Lemma}
-\newtheorem{proposition}[dummy]{Proposition}
-\newtheorem{corollary}[dummy]{Corollary}
-\newtheorem{assumption}[dummy]{Assumption}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{assumption}[theorem]{Assumption}
 % Definition Styles
 \theoremstyle{definition}
-\newtheorem{definition}{Definition}[dummy]
-\newtheorem{example}{Example}[dummy]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
 \theoremstyle{remark}
-\newtheorem{remark}{Remark}[dummy]
+\newtheorem{remark}{Remark}
 
 %%--------------------------------------------------------------------------
 %% Other
