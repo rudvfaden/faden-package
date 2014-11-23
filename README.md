@@ -1,9 +1,12 @@
 
+# Faden LaTeX package
 This latex style file was created for my own personal use. 
 
 It is inspired by [Kieran Healy](http://kieranhealy.org/).
 
 Besides looking great, the `.sty` file also loads a bunch of packages, custom math commands, and theorem environments.
+
+![Example](image "Example")
 
 ## Packages
 fixltx2e                  
@@ -65,4 +68,4 @@ xcolor
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
-```
+``
