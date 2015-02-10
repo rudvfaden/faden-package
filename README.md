@@ -9,28 +9,41 @@ Besides looking great, the `.sty` file also loads a bunch of packages, custom ma
 ![Example](https://www.dropbox.com/s/vt6s6ow3e4vu9hc/latexpackage1.png?dl=1 "Example")
 
 ## Packages
-- fixltx2e                  
+
+- fixltx2e  
+- 
 #### Math
+
 - mathtools                 
 - amsthm                    
-- bm                        
+- bm     
+- 
 #### Figures and tables
+
 - booktabs                  
 - subcaption                
 - pgfplots
 - tikz 
+
 #### References
+
 - hyperref                  
-- cleveref                  
+- cleveref     
+-
 #### bibliography
+
 - csquotes
 - biblatex
+
 #### Misc.
+
 - todonotes           
 - url                       
 - appendix              
-- accents                   
+- accents 
+
 #### Index
+
 - imakeidx                
 - xstring
 - xcolor
