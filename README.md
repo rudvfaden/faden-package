@@ -29,7 +29,7 @@ Besides looking great, the `.sty` file also loads a bunch of packages, custom ma
 
 - hyperref                  
 - cleveref     
--
+
 #### bibliography
 
 - csquotes
