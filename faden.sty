@@ -7,14 +7,32 @@
 \RequirePackage[top=2.5cm, bottom=2.5cm, left=3.5cm, right=3.5cm]{geometry} %Margins
 
 % Title and author
+% Condition
+\newif\if@drafting
+\def\maybedraft{%
+  \if@drafting
+   \begin{flushleft}
+   \vskip 6em
+     Incomplete draft. Do not believe; do not cite.
+    \vskip 6em
+   \end{flushleft}
+   \else
+  %Full draft. Enjoy!
+   \fi}
+
+\DeclareOption{drafting}{\@draftingtrue}
+
+\ProcessOptions\relax
+%\LoadClass[]{article}[1994/06/01]
+
 \makeatletter
 \def\@maketitle{%
   \newpage
   %\vspace{-\topskip}      % remove the initial space
-
-  \vskip 6em
-   \begin{flushleft}Incomplete draft. Please do not cite or quote without premission \end{flushleft}
-  \vskip 6em
+  
+     \noindent
+     \maybedraft
+  
   {}
   \begingroup    % instead of \begin{center}
   \begin{flushleft}
@@ -36,8 +54,8 @@
 }
 \makeatother
 
-%\RequirePackage{microtype} 									% improves the spacing between words and letters. Created wird warning, so I will not use it now
-\RequirePackage{fixltx2e} 									% fix common latex errors
+%\RequirePackage{microtype}                   % improves the spacing between words and letters. Created wird warning, so I will not use it now
+\RequirePackage{fixltx2e}                   % fix common latex errors
 % Sections
 \RequirePackage[explicit]{titlesec}
 \RequirePackage{textcase}
@@ -54,22 +72,22 @@
   {\normalfont}{\thesubsubsection}{1em}{\itshape{#1}}
 
 %% Math
-\RequirePackage{mathtools} 									% math
-\RequirePackage{amsthm} 									% theorems and definition
-\RequirePackage{bm} 										% Bold math
+\RequirePackage{mathtools}                  % math
+\RequirePackage{amsthm}                   % theorems and definition
+\RequirePackage{bm}                     % Bold math
 %% Figures and tables
-\RequirePackage{booktabs} 									% pretty tables
-\RequirePackage{subcaption} 								% subfigures
-\RequirePackage{pgfplots,tikz} \pgfplotsset{compat =1.11} 	% figures
+\RequirePackage{booktabs}                   % pretty tables
+\RequirePackage{subcaption}                 % subfigures
+\RequirePackage{pgfplots,tikz} \pgfplotsset{compat =1.11}   % figures
 \usetikzlibrary{decorations.pathreplacing}
 %% References
-\RequirePackage{hyperref}  									% hypersetup
-\RequirePackage{cleveref} 									% auto-detect cross reference type when using \cref
+\RequirePackage{hyperref}                   % hypersetup
+\RequirePackage{cleveref}                   % auto-detect cross reference type when using \cref
 % bibliography
 \RequirePackage{csquotes}
 \emergencystretch=1em
 \RequirePackage[%
-backend=bibtex,   										% use BibTeX
+backend=biber,                       % use BibTeX
 style=chicago-authordate,
 natbib=true,
 bibwarn=true,
@@ -77,12 +95,12 @@ backref=true,
 url=false, isbn=false
 ]{biblatex}
 %% Misc.
-\RequirePackage[colorinlistoftodos]{todonotes} 				% todo notes
-\RequirePackage{url} 										% for line breaks in url links
-\RequirePackage[titletoc,toc,title]{appendix} 				% appendices
-\RequirePackage{accents} 									% underbar
+\RequirePackage[colorinlistoftodos]{todonotes}        % todo notes
+\RequirePackage{url}                    % for line breaks in url links
+\RequirePackage[titletoc,toc,title]{appendix}         % appendices
+\RequirePackage{accents}                  % underbar
 % Index
-\RequirePackage{imakeidx} 									% Index
+\RequirePackage{imakeidx}                   % Index
 \RequirePackage{xstring}
 \RequirePackage{xcolor}
 %Draft option
@@ -96,14 +114,14 @@ url=false, isbn=false
 \definecolor{webbrown}{rgb}{.6,0,0}
 \definecolor{myblue}{HTML}{394773}
 \hypersetup{
-	colorlinks = true,      					%	Color links instead of ugly boxes
-	urlcolor   = webbrown,  					%	Colors for external hyperlinks
-	linkcolor  = myblue,      					%	Colors of internal links
-	citecolor  = webgreen,						%	Colors of citations
-	pdfauthor = {\myauthor},
+  colorlinks = true,                % Color links instead of ugly boxes
+  urlcolor   = webbrown,            % Colors for external hyperlinks
+  linkcolor  = myblue,                % Colors of internal links
+  citecolor  = webgreen,            % Colors of citations
+  pdfauthor = {\myauthor},
   pdftitle = {\mytitle},
   pdfkeywords = {\mykeywords}
-	pdfcreator = {LaTeXing}
+  pdfcreator = {LaTeXing}
 }
 %%--------------------------------------------------------------------------
 %% Commands
@@ -135,9 +153,21 @@ url=false, isbn=false
 % Definition Styles
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
-\newtheorem{example}{Example}[section]
 \theoremstyle{remark}
 \newtheorem{remark}{Remark}
+
+%custom example with circle as closure
+\newcounter{example}[section]
+\newenvironment{example}[1][]{\refstepcounter{example}\par\medskip
+\noindent \textbf{Example~\theexample. #1} \rmfamily }{\vskip -1em\begin{flushright}$\circ$\end{flushright}\medskip}
+
+% Put theorem qed square on its own line
+\usepackage{etoolbox}
+\patchcmd{\endproof}
+  {\popQED}
+  {\par\popQED}
+  {}
+  {}
 
 %%--------------------------------------------------------------------------
 %% Other
