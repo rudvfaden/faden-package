@@ -4,7 +4,7 @@
 %%--------------------------------------------------------------------------
 %% Pacakges
 %%--------------------------------------------------------------------------
-\RequirePackage[top=2.5cm, bottom=2.5cm, left=3.5cm, right=3.5cm]{geometry} %Margins
+%\RequirePackage[top=2.5cm, bottom=2.5cm, left=3.5cm, right=3.5cm]{geometry} %Margins
 
 % Title and author
 % Condition
@@ -59,7 +59,7 @@
 % Sections
 \RequirePackage[explicit]{titlesec}
 \RequirePackage{textcase}
-
+\usepackage[T1]{fontenc}
 % sections and title
 
 \titleformat{\section}
@@ -76,9 +76,11 @@
 \RequirePackage{amsthm}                   % theorems and definition
 \RequirePackage{bm}                     % Bold math
 %% Figures and tables
-\RequirePackage{booktabs}                   % pretty tables
-\RequirePackage{subcaption}                 % subfigures
-\RequirePackage{pgfplots,tikz} \pgfplotsset{compat =1.11}   % figures
+
+\RequirePackage{booktabs} 									% pretty tables
+\RequirePackage{subcaption} 								% subfigures
+\RequirePackage{pgfplots,tikz} %\pgfplotsset{compat =1.11} 	% figures
+
 \usetikzlibrary{decorations.pathreplacing}
 %% References
 \RequirePackage{hyperref}                   % hypersetup
@@ -86,6 +88,7 @@
 % bibliography
 \RequirePackage{csquotes}
 \emergencystretch=1em
+\hfuzz=5.002pt 
 \RequirePackage[%
 backend=biber,                       % use BibTeX
 style=chicago-authordate,
