@@ -163,7 +163,7 @@ url=false, isbn=false
 \newcounter{example}[section]
 \newenvironment{example}[1][]{\refstepcounter{example}\par\medskip
 \noindent \textbf{Example~\theexample. #1} \rmfamily }{\vskip -1em\begin{flushright}$\circ$\end{flushright}\medskip}
-
+\numberwithin{example}{section}
 % Put theorem qed square on its own line
 \usepackage{etoolbox}
 \patchcmd{\endproof}
