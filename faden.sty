@@ -177,9 +177,9 @@ url=false, isbn=false
 %%--------------------------------------------------------------------------
 % partial derivative macro 
 \makeatletter
-\DeclareRobustCommand{\pd}[1]{%
-  \@ifnextchar\bgroup{\@pd{#1}}{\@pd{}{#1}}}
-\newcommand{\@pd}[2]{\frac{\partial#1}{\partial#2}}
+\DeclareRobustCommand{\pder}[1]{%
+  \@ifnextchar\bgroup{\@pder{#1}}{\@pder{}{#1}}}
+\newcommand{\@pder}[2]{\frac{\partial#1}{\partial#2}}
 \makeatother
 
 \setkeys{Gin}{width=1\textwidth} % make figures as wide as the margins
