@@ -175,6 +175,12 @@ url=false, isbn=false
 %%--------------------------------------------------------------------------
 %% Other
 %%--------------------------------------------------------------------------
+% partial derivative macro 
+\makeatletter
+\DeclareRobustCommand{\pd}[1]{%
+  \@ifnextchar\bgroup{\@pd{#1}}{\@pd{}{#1}}}
+\newcommand{\@pd}[2]{\frac{\partial#1}{\partial#2}}
+\makeatother
 
 \setkeys{Gin}{width=1\textwidth} % make figures as wide as the margins
 %%Important words are added to the index and printed in different bold
