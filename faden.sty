@@ -133,11 +133,9 @@ url=false, isbn=false
 \newcommand{\ubar}[1]{\underaccent{\bar}{#1}} % underbar
 \global\long\def\argmax{\operatornamewithlimits{arg\, max}} % argmax
 % partial derivative with optional second argument
-\makeatletter
-\DeclareRobustCommand{\pder}[1]{%
-  \@ifnextchar\bgroup{\@pder{#1}}{\@pder{}{#1}}}
-\newcommand{\@pder}[2]{\frac{\partial#1}{\partial#2}}
-\makeatother
+\usepackage{xparse} %needed for DeclareDocumentCommand
+\DeclareDocumentCommand{\pder}{ O{} O{} m }{\frac{\partial^{#2}#1}{\partial#3^{#2}}}
+
 % Sets
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
@@ -163,7 +161,7 @@ url=false, isbn=false
 \newcounter{example}[section]
 \newenvironment{example}[1][]{\refstepcounter{example}\par\medskip
 \noindent \textbf{Example~\theexample. #1} \rmfamily }{\vskip -1em\begin{flushright}$\circ$\end{flushright}\medskip}
-
+\numberwithin{example}{section}
 % Put theorem qed square on its own line
 \usepackage{etoolbox}
 \patchcmd{\endproof}
