@@ -41,12 +41,16 @@ Besides looking great, the `.sty` file also loads a bunch of packages, custom ma
 - url                       
 - appendix              
 - accents 
+- xparse
 
 #### Index
 
 - imakeidx                
 - xstring
 - xcolor
+
+#### Version control
+ - Version control with the VC package. See [The VC package](https://www.ctan.org/tex-archive/support/vc?lang=en) on CTAN
 
 ## Thorems
 
@@ -71,14 +75,17 @@ Besides looking great, the `.sty` file also loads a bunch of packages, custom ma
 % math
 \newcommand{\ubar}[1]{\underaccent{\bar}{#1}} % underbar
 \global\long\def\argmax{\operatornamewithlimits{arg\, max}} % argmax
-% partial derivative with optional second argument
-\makeatletter
-\DeclareRobustCommand{\pder}[1]{%
-  \@ifnextchar\bgroup{\@pder{#1}}{\@pder{}{#1}}}
-\newcommand{\@pder}[2]{\frac{\partial#1}{\partial#2}}
-\makeatother
+
+% partial derivative with optional  arguments
+\usepackage{xparse} %needed for DeclareDocumentCommand
+\DeclareDocumentCommand{\pder}{ O{} O{} m }{\frac{\partial^{#2}#1}{\partial#3^{#2}}}
+
 % Sets
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
-``
+```
+
+
+## Requirements
+A working tex system with all of the above package installed
